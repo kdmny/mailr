@@ -135,9 +135,12 @@ class IMAPMailbox
   def disconnect
     if @connected
       @imap.logout
-      @imap.disconnect
-      @imap = nil
-      @connected = false
+      begin
+        @imap.disconnect
+      rescue
+        @imap = nil
+        @connected = false
+      end
     end	
   end
   

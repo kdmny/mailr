@@ -1,0 +1,21 @@
+<%= page_navigation_webmail @pages if @pages.page_count > 1 %>
+<table width='98%'>
+  <thead>
+    <tr>
+      <th width="1%">
+        &nbsp;
+        <!-- <input type="checkbox" name="allbox" onclick="checkAll(this.form)" style="margin: 0 0 0 4px" /> -->
+      </th>
+      <th>&nbsp;</th>
+      <th><%= link_to(_('Date'), :controller=>'webmail', :action=>'api', :op=>'SORT', :page=>@page, :scc=>'date')%></th>
+      <th><%= link_to(_('Size'), :controller=>'webmail', :action=>'api', :op=>'SORT', :page=>@page, :scc=>'size')%></th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for message in @messages %>
+      <%=  render :partial  => 'message_row', :object => message %>
+    <% end %>
+  </tbody>
+</table>
+<%= page_navigation_webmail @pages if @pages.page_count > 1 %>

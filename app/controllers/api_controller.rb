@@ -15,7 +15,17 @@ class ApiController < ApplicationController
   
   after_filter :close_imap_session
   
-  def api
+  def message
+    @folder_name = params[:contact]
+    @folder_name ||= 'INBOX'
+    @msg_id = msg_id_param
+    @imapmail = folder.message(@msg_id)
+    # folder.mark_read(@imapmail.uid) if @imapmail.unread
+    @mail = TMail::Mail.parse(@imapmail.full_body)
+    render :partial => 'message'
+  end
+  
+  def messages
     @folder_name = params[:contact]
     @folder_name ||= 'INBOX'
     session["return_to"] = nil

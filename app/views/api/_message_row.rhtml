@@ -2,7 +2,7 @@
   <td>&nbsp;</td>
   <td class="from"><%= short_address(message_row.from_addr) %></td>
   <td class="subject"><div class='cutField'>
-    <%= link_to(parse_subject(message_row.subject) << "&nbsp;" , :controller=>'webmail', :action=>'message', :msg_id=>message_row.uid)%>
+    <%= link_to(parse_subject(message_row.subject) << "&nbsp;" , :controller=>'api', :action=>'message', :msg_id=>message_row.uid)%>
   </td>
   <td class="date"><%= message_date(message_row.date) %></td>
   <td class="size"><%= message_size(message_row.size) %></td>

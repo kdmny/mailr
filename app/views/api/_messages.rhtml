@@ -1,14 +1,12 @@
-<%= page_navigation_webmail @pages if @pages.page_count > 1 %>
-<table width='98%'>
+<%= page_navigation_api @pages if @pages.page_count > 1 %>
+<table width='613px'>
   <thead>
     <tr>
-      <th width="1%">
-        &nbsp;
-        <!-- <input type="checkbox" name="allbox" onclick="checkAll(this.form)" style="margin: 0 0 0 4px" /> -->
-      </th>
       <th>&nbsp;</th>
-      <th><%= link_to(_('Date'), :controller=>'webmail', :action=>'api', :op=>'SORT', :page=>@page, :scc=>'date')%></th>
-      <th><%= link_to(_('Size'), :controller=>'webmail', :action=>'api', :op=>'SORT', :page=>@page, :scc=>'size')%></th>
+      <th>From</th>
+      <th>Subject</th>
+      <th><%= link_to(_('Date'), :controller=>'api', :action=>'messages', :op=>'SORT', :page=>@page, :scc=>'date')%></th>
+      <th><%= link_to(_('Size'), :controller=>'api', :action=>'messages', :op=>'SORT', :page=>@page, :scc=>'size')%></th>
       <th>&nbsp;</th>
     </tr>
   </thead>
@@ -18,4 +16,4 @@
     <% end %>
   </tbody>
 </table>
-<%= page_navigation_webmail @pages if @pages.page_count > 1 %>
+<%= page_navigation_api @pages if @pages.page_count > 1 %>
